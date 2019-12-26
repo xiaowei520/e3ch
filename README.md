@@ -3,7 +3,7 @@ e3ch
 
 etcd v3 client with hierarchy
 
-There are directory and key-value in etcd v2, which is convenient to manage the key-value store. But etcd v3 only supports flat key-value space (see [#633](https://github.com/coreos/etcd/issues/633#issuecomment-152768632)).Though you could use `prefix` to adjust the new API, it is not easy to manage key-value store or make the structure clearly. e3ch is built for making etcd v3 'look like' a key-value store supporting hierarchy.
+There are directory and key-value in etcd v2, which is convenient to manage the key-value store. But etcd v3 only supports flat key-value space (see [#633](https://go.etcd.io/etcd/issues/633#issuecomment-152768632)).Though you could use `prefix` to adjust the new API, it is not easy to manage key-value store or make the structure clearly. e3ch is built for making etcd v3 'look like' a key-value store supporting hierarchy.
 
 ## Design
 
@@ -19,7 +19,7 @@ When listing/deleting a directory, e3ch will get key-value with the prefix. For 
 package main
 
 import (
-	"github.com/coreos/etcd/clientv3"
+	"go.etcd.io/etcd/clientv3"
 	"github.com/soyking/e3ch"
 )
 
