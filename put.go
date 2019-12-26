@@ -11,20 +11,20 @@ func (clt *EtcdHRCHYClient) Put(key, value string) error {
 
 // mustEmpty to confirm the key has not been set
 func (clt *EtcdHRCHYClient) put(key string, value string, mustEmpty bool) error {
-	key, parentKey, err := clt.ensureKey(key)
+	key, _, err := clt.ensureKey(key)
 	if err != nil {
 		return err
 	}
-
 	// parentKey should be directory
 	// key should not be directory
-	cmp := []clientv3.Cmp{
-		clientv3.Compare(
-			clientv3.Value(parentKey),
-			"=",
-			clt.dirValue,
-		),
-	}
+	//cmp := []clientv3.Cmp{
+	//	clientv3.Compare(
+	//		clientv3.Value(parentKey),
+	//		"=",
+	//		clt.dirValue,
+	//	),
+	//}
+	var cmp []clientv3.Cmp
 
 	if mustEmpty {
 		cmp = append(
